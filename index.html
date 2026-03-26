@@ -172,9 +172,9 @@ function playHat(gn,time,open){
 // SPACE: F# pentatonic + whole tone. Cosmic, vast. Echo repeats. 120bpm
 
 var melPats=[
-  // GRASS — Kirby/Yoshi style: playful staccato bounce, major pentatonic
-  ["G5",0,"E5","G5","A5",0,"C6","A5", "G5",0,"E5","D5","C5",0,"D5","E5",
-   "A5",0,"G5","A5","C6",0,"D6","C6", "A5",0,"G5","E5","D5","E5","G5",0],
+  // GRASS — simple 5-note melody, playful bounce (C D E G A only)
+  ["E5",0,"G5",0,"A5",0,"G5","E5", "G5",0,"E5",0,"C5",0,"D5",0,
+   "E5",0,"G5",0,"A5","G5","E5",0, "D5",0,"C5",0,"E5",0,"G5",0],
   // DESERT — exotic Phrygian dominant, shimmering arps, augmented 2nds (E phryg dom)
   ["E5","F5","G#5","E5","F5","G#5","A5","B5", "A5","G#5","F5","E5","D5","E5","F5","G#5",
    "B5","A5","G#5","F5","E5","F5","G#5","B5", "A5","G#5","F5","E5","B4","C5","E5","F5"],
@@ -189,9 +189,9 @@ var melPats=[
    "A5","C#6","E6","A5","F#5","C#5","A4","E4",   "B5","D#6","F#6","B5","A5","F#5","D#5","B4"],
 ];
 var bassPats=[
-  // GRASS — playful bouncing bass, syncopated
-  ["C2","C3",0,"C2","G2",0,"C3",0, "F2","F3",0,"F2","C3",0,"F3",0,
-   "G2","G3",0,"G2","D3",0,"G3",0, "A1","A2",0,"A1","E2",0,"A2",0],
+  // GRASS — thick pumping bass, always moving
+  ["C2","C2","C3","C2","C2","G2","C3","C2", "C2","C2","C3","C2","G2","C2","G2","C3",
+   "C2","C2","C3","C2","C2","G2","C3","C2", "G2","C2","G2","C3","C2","G2","C2","C3"],
   // DESERT — E phrygian, heavy pulse root movement
   ["E2","E3","E2","E3", "F2","F3","F2","F3", "G#2","E2","G#2","E2","A2","B2","A2","E2"],
   // FOREST — Am-F-C-G walking, earthy
@@ -202,8 +202,8 @@ var bassPats=[
   ["F#1","C#2","F#2","C#2","D2","A2","D3","A2","E2","B2","E3","B2","F#1","C#2","A2","F#2"],
 ];
 var arpPats=[
-  // GRASS — bouncy staccato arp
-  ["C5","G4","E5","C5","A4","E4","C5","A4","F4","C5","A4","F5","G4","D5","B4","G5"],
+  // GRASS — simple arp on C and G only
+  ["C4","E4","G4","E4","C4","G4","E4","G4","C4","E4","G4","C5","G4","E4","C4","G3"],
   // DESERT — exotic shimmering E phrygian
   ["E5","G#5","B5","E6","B5","G#5","F5","A5","C6","A5","F5","E5","G#5","B5","G#5","E5"],
   // FOREST — mysterious Am arps with quick trills
