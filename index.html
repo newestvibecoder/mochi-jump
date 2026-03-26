@@ -1310,36 +1310,55 @@ function drawPlatforms(){
           if(p.seed>=0.2&&p.seed<0.5){
             var rSide=p.seed<0.35?-1:1;
             ctx.save();ctx.translate(rSide*14,-p.h/2);
-            // bushy tall grass
-            for(var bg2=0;bg2<5;bg2++){
-              var bga=-0.4+bg2*0.2+Math.sin(drawT*1.2+bg2)*0.06;
-              var bgh=10+bg2*2;
-              ctx.fillStyle=bg2%2===0?"#28c050":"#38d868";
-              ctx.beginPath();ctx.moveTo(Math.sin(bga)*3-2,0);
-              ctx.quadraticCurveTo(Math.sin(bga)*5,-bgh,Math.sin(bga)*3+2,0);ctx.fill();
+            // thick tall grass surrounding the rose — behind
+            var grassPositions=[-8,-5,-2,2,5,8];
+            for(var bg2=0;bg2<grassPositions.length;bg2++){
+              var gp=grassPositions[bg2];
+              var bgh=12+Math.abs(gp)*0.8+Math.sin(bg2*1.7)*2;
+              var sway=Math.sin(drawT*1.3+bg2*1.1)*1.5;
+              ctx.fillStyle=bg2%3===0?"#20b848":bg2%3===1?"#30d860":"#28c450";
+              ctx.beginPath();
+              ctx.moveTo(gp-2,0);ctx.quadraticCurveTo(gp+sway,-bgh,gp+2,0);ctx.fill();
+              // second blade slightly offset for thickness
+              ctx.fillStyle=bg2%2===0?"#38e070":"#25c048";
+              ctx.beginPath();
+              ctx.moveTo(gp-1,0);ctx.quadraticCurveTo(gp+sway*0.7+1,-bgh*0.85,gp+1,0);ctx.fill();
             }
             // rose stem
-            ctx.strokeStyle="#208830";ctx.lineWidth=1.8;ctx.lineCap="round";
+            ctx.strokeStyle="#1a7828";ctx.lineWidth=2;ctx.lineCap="round";
             ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(1,-14,0,-20);ctx.stroke();
             // thorns
-            ctx.strokeStyle="#208830";ctx.lineWidth=1;
-            ctx.beginPath();ctx.moveTo(-1,-8);ctx.lineTo(-3,-10);ctx.stroke();
-            ctx.beginPath();ctx.moveTo(1,-13);ctx.lineTo(3,-15);ctx.stroke();
-            // rose head — layered petals
-            ctx.fillStyle="#e02050";
-            ctx.beginPath();ctx.arc(-2,-21,3.5,0,6.283);ctx.fill();
-            ctx.beginPath();ctx.arc(2,-21,3.5,0,6.283);ctx.fill();
-            ctx.beginPath();ctx.arc(0,-23,3.5,0,6.283);ctx.fill();
-            ctx.beginPath();ctx.arc(0,-20,3,0,6.283);ctx.fill();
-            // inner petals — darker
-            ctx.fillStyle="#c01840";
-            ctx.beginPath();ctx.arc(0,-21,2.5,0,6.283);ctx.fill();
-            // highlight
-            ctx.fillStyle="rgba(255,255,255,0.3)";
-            ctx.beginPath();ctx.arc(-1,-22.5,1.5,0,6.283);ctx.fill();
+            ctx.strokeStyle="#1a7828";ctx.lineWidth=1.2;
+            ctx.beginPath();ctx.moveTo(-1,-8);ctx.lineTo(-3.5,-10);ctx.stroke();
+            ctx.beginPath();ctx.moveTo(1,-13);ctx.lineTo(3.5,-15);ctx.stroke();
             // leaf on stem
-            ctx.fillStyle="#30b040";
-            ctx.beginPath();ctx.moveTo(-1,-12);ctx.quadraticCurveTo(-6,-15,-5,-11);ctx.quadraticCurveTo(-3,-10,-1,-12);ctx.fill();
+            ctx.fillStyle="#28b040";
+            ctx.beginPath();ctx.moveTo(-1,-11);ctx.quadraticCurveTo(-7,-14,-5,-10);ctx.quadraticCurveTo(-3,-9,-1,-11);ctx.fill();
+            ctx.beginPath();ctx.moveTo(1,-16);ctx.quadraticCurveTo(6,-19,5,-15);ctx.quadraticCurveTo(3,-14,1,-16);ctx.fill();
+            // rose head — layered petals
+            ctx.fillStyle="#e82050";
+            ctx.beginPath();ctx.arc(-2.5,-21,3.5,0,6.283);ctx.fill();
+            ctx.beginPath();ctx.arc(2.5,-21,3.5,0,6.283);ctx.fill();
+            ctx.beginPath();ctx.arc(0,-23.5,3.5,0,6.283);ctx.fill();
+            ctx.beginPath();ctx.arc(-1,-19.5,3,0,6.283);ctx.fill();
+            ctx.beginPath();ctx.arc(1,-19.5,3,0,6.283);ctx.fill();
+            // inner petals
+            ctx.fillStyle="#c81840";
+            ctx.beginPath();ctx.arc(0,-21,2.8,0,6.283);ctx.fill();
+            // center
+            ctx.fillStyle="#ff4068";
+            ctx.beginPath();ctx.arc(0,-21.5,1.5,0,6.283);ctx.fill();
+            // highlight
+            ctx.fillStyle="rgba(255,255,255,0.35)";
+            ctx.beginPath();ctx.arc(-1.5,-23,1.5,0,6.283);ctx.fill();
+            // front grass — overlaps rose stem for depth
+            for(var fg=0;fg<3;fg++){
+              var fgx=-4+fg*4;
+              var fgh=8+fg*1.5;
+              var fgsway=Math.sin(drawT*1.5+fg*2)*1.2;
+              ctx.fillStyle=fg%2===0?"#30d860":"#40e878";
+              ctx.beginPath();ctx.moveTo(fgx-1.5,0);ctx.quadraticCurveTo(fgx+fgsway,-fgh,fgx+1.5,0);ctx.fill();
+            }
             ctx.restore();
           }
         }else if(biome===1){
