@@ -172,9 +172,9 @@ function playHat(gn,time,open){
 // SPACE: F# pentatonic + whole tone. Cosmic, vast. Echo repeats. 120bpm
 
 var melPats=[
-  // GRASS — simple 5-note melody, playful bounce (C D E G A only)
-  ["E5",0,"G5",0,"A5",0,"G5","E5", "G5",0,"E5",0,"C5",0,"D5",0,
-   "E5",0,"G5",0,"A5","G5","E5",0, "D5",0,"C5",0,"E5",0,"G5",0],
+  // GRASS — happy pentatonic bounce (C E G A C6 only — all happy intervals)
+  ["E5",0,"G5",0,"A5",0,"G5","E5", "G5",0,"A5",0,"C6",0,"A5",0,
+   "G5",0,"E5",0,"G5","A5","C6",0, "A5",0,"G5",0,"E5",0,"C5",0],
   // DESERT — exotic Phrygian dominant, shimmering arps, augmented 2nds (E phryg dom)
   ["E5","F5","G#5","E5","F5","G#5","A5","B5", "A5","G#5","F5","E5","D5","E5","F5","G#5",
    "B5","A5","G#5","F5","E5","F5","G#5","B5", "A5","G#5","F5","E5","B4","C5","E5","F5"],
@@ -215,8 +215,8 @@ var arpPats=[
 ];
 var drumPats=[
   // GRASS — upbeat steady groove, lively
-  // GRASS — skippy light groove
-  ["k","h",0,"h","s",0,"k",0,"h","k","h",0,"s","h",0,"h"],
+  // GRASS — alternating kicks, bouncy happy groove
+  ["k",0,"h","h","s",0,"h",0,"k","h",0,"h","s","h","k",0],
   // DESERT — heavy rhythmic pulse, exotic
   ["k","h","k","h","s",0,"k","k","h","k","h","h","s","h","k",0],
   // FOREST — light, organic, alternating
