@@ -172,9 +172,13 @@ function playHat(gn,time,open){
 // SPACE: F# pentatonic + whole tone. Cosmic, vast. Echo repeats. 120bpm
 
 var melPats=[
-  // GRASS — super catchy earworm hook, bouncy and joyful (C major, Pokemon Route 1)
-  ["C5","C5","E5","G5","A5","G5","E5","C5", "D5","D5","F5","A5","G5","F5","D5","C5",
-   "E5","G5","C6","E6","D6","C6","G5","E5", "A5","G5","E5","C5","D5","E5","G5","C6"],
+  // GRASS — memorable hook: short motif repeated then developed (C major)
+  // phrase A: da-da DA da (call)
+  // phrase B: answer that lifts up
+  // phrase A again: familiarity
+  // phrase C: resolution that drops back home
+  ["E5","E5","G5",0,"E5","D5","C5",0, "E5","E5","G5","A5","G5",0,0,0,
+   "E5","E5","G5",0,"A5","B5","C6",0, "B5","A5","G5","E5","D5","C5",0,0],
   // DESERT — exotic Phrygian dominant, shimmering arps, augmented 2nds (E phryg dom)
   ["E5","F5","G#5","E5","F5","G#5","A5","B5", "A5","G#5","F5","E5","D5","E5","F5","G#5",
    "B5","A5","G#5","F5","E5","F5","G#5","B5", "A5","G#5","F5","E5","B4","C5","E5","F5"],
@@ -189,9 +193,9 @@ var melPats=[
    "A5","C#6","E6","A5","F#5","C#5","A4","E4",   "B5","D#6","F#6","B5","A5","F#5","D#5","B4"],
 ];
 var bassPats=[
-  // GRASS — bouncy driving bass, never stops moving (C-F-G-Am)
-  ["C2","G2","C3","G2","C2","E2","G2","E2", "F2","C3","F3","C3","F2","A2","C3","A2",
-   "G2","D3","G3","D3","G2","B2","D3","B2", "A1","E2","A2","E2","A1","C2","E2","C2"],
+  // GRASS — bouncy bass that grooves with the melody (C-Am-F-G)
+  ["C2",0,"C3",0,"C2","E2",0,0, "A1",0,"A2",0,"A1","C2",0,0,
+   "F2",0,"F3",0,"F2","A2",0,0, "G2",0,"G3",0,"G2","B2","D3",0],
   // DESERT — E phrygian, heavy pulse root movement
   ["E2","E3","E2","E3", "F2","F3","F2","F3", "G#2","E2","G#2","E2","A2","B2","A2","E2"],
   // FOREST — Am-F-C-G walking, earthy
@@ -202,8 +206,8 @@ var bassPats=[
   ["F#1","C#2","F#2","C#2","D2","A2","D3","A2","E2","B2","E3","B2","F#1","C#2","A2","F#2"],
 ];
 var arpPats=[
-  // GRASS — rapid sparkly arps, nonstop energy
-  ["C5","E5","G5","C6","E6","C6","G5","E5","F5","A5","C6","F6","C6","A5","G5","D6"],
+  // GRASS — gentle sparkle arp following the chords
+  ["C4","E4","G4","C5","A3","C4","E4","A4","F3","A3","C4","F4","G3","B3","D4","G4"],
   // DESERT — exotic shimmering E phrygian
   ["E5","G#5","B5","E6","B5","G#5","F5","A5","C6","A5","F5","E5","G#5","B5","G#5","E5"],
   // FOREST — mysterious Am arps with quick trills
@@ -215,8 +219,8 @@ var arpPats=[
 ];
 var drumPats=[
   // GRASS — upbeat steady groove, lively
-  // GRASS — upbeat driving, energetic from the start
-  ["k","h","k","h","s","h","h","k","h","h","k","h","s","h","k","h"],
+  // GRASS — clean bouncy pocket, room to breathe
+  ["k",0,"h",0,"s",0,"h","h","k","k",0,"h","s",0,"h",0],
   // DESERT — heavy rhythmic pulse, exotic
   ["k","h","k","h","s",0,"k","k","h","k","h","h","s","h","k",0],
   // FOREST — light, organic, alternating
@@ -254,7 +258,7 @@ function updateMusic(sc,bossProximity){
   var phase=ms<1500?0:ms<3000?1:ms<4500?2:ms<6000?3:4;
 
   // BPM per biome spec
-  var biomeBPM=[148,130,125,115,120];
+  var biomeBPM=[138,130,125,115,120];
   var targetBPM=biomeBPM[phase]+Math.floor(sc/2000)*2;
   targetBPM=Math.min(targetBPM,155);
   mus.bpm+=(targetBPM-mus.bpm)*0.005;
