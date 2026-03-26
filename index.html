@@ -1396,6 +1396,27 @@ function drawPlatforms(){
             for(var sp=0;sp<4;sp++){ctx.fillRect(-4,-20+sp*5,1,2);ctx.fillRect(3,-18+sp*5,1,2);}
             ctx.restore();
           }
+          // tumbleweed on ~10% of desert platforms
+          if(p.seed>=0.9){
+            var twSide=p.seed>0.95?-1:1;
+            ctx.save();ctx.translate(twSide*18,-p.h/2-6);
+            ctx.rotate(drawT*1.5*twSide);
+            // tangled ball of dried branches
+            ctx.strokeStyle="#a08040";ctx.lineWidth=1.2;ctx.lineCap="round";
+            for(var tw=0;tw<8;tw++){
+              var ta=tw/8*6.283;
+              var tr1=4+Math.sin(tw*2.3)*1.5;
+              var tr2=4+Math.cos(tw*1.7)*1.5;
+              ctx.beginPath();
+              ctx.moveTo(Math.cos(ta)*tr1,Math.sin(ta)*tr1);
+              ctx.quadraticCurveTo(Math.cos(ta+0.8)*2,Math.sin(ta+0.8)*2,Math.cos(ta+1.5)*tr2,Math.sin(ta+1.5)*tr2);
+              ctx.stroke();
+            }
+            // inner fill
+            ctx.fillStyle="rgba(160,130,70,0.3)";
+            ctx.beginPath();ctx.arc(0,0,3.5,0,6.283);ctx.fill();
+            ctx.restore();
+          }
         }else if(biome===2){
           // JUNGLE — deep green with wild grass
           pill(0,3,p.w,p.h,"#108030");pill(0,0,p.w,p.h,"#20a840");pill(0,-2,p.w-6,p.h-5,"#40c860");
