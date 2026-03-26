@@ -1306,6 +1306,42 @@ function drawPlatforms(){
           ctx.fillStyle=j%2===0?"#30d870":"#50f090";ctx.beginPath();ctx.moveTo(gx-2,-p.h/2);ctx.quadraticCurveTo(gx,-p.h/2-gh,gx+2,-p.h/2);ctx.fill();}
           ctx.fillStyle="#ff60a0";ctx.beginPath();ctx.arc(18,-p.h/2-3,2.5,0,6.283);ctx.fill();
           ctx.fillStyle="#ffe040";ctx.beginPath();ctx.arc(18,-p.h/2-3,1,0,6.283);ctx.fill();
+          // rose bush on ~30% of meadow platforms
+          if(p.seed>=0.2&&p.seed<0.5){
+            var rSide=p.seed<0.35?-1:1;
+            ctx.save();ctx.translate(rSide*14,-p.h/2);
+            // bushy tall grass
+            for(var bg2=0;bg2<5;bg2++){
+              var bga=-0.4+bg2*0.2+Math.sin(drawT*1.2+bg2)*0.06;
+              var bgh=10+bg2*2;
+              ctx.fillStyle=bg2%2===0?"#28c050":"#38d868";
+              ctx.beginPath();ctx.moveTo(Math.sin(bga)*3-2,0);
+              ctx.quadraticCurveTo(Math.sin(bga)*5,-bgh,Math.sin(bga)*3+2,0);ctx.fill();
+            }
+            // rose stem
+            ctx.strokeStyle="#208830";ctx.lineWidth=1.8;ctx.lineCap="round";
+            ctx.beginPath();ctx.moveTo(0,0);ctx.quadraticCurveTo(1,-14,0,-20);ctx.stroke();
+            // thorns
+            ctx.strokeStyle="#208830";ctx.lineWidth=1;
+            ctx.beginPath();ctx.moveTo(-1,-8);ctx.lineTo(-3,-10);ctx.stroke();
+            ctx.beginPath();ctx.moveTo(1,-13);ctx.lineTo(3,-15);ctx.stroke();
+            // rose head — layered petals
+            ctx.fillStyle="#e02050";
+            ctx.beginPath();ctx.arc(-2,-21,3.5,0,6.283);ctx.fill();
+            ctx.beginPath();ctx.arc(2,-21,3.5,0,6.283);ctx.fill();
+            ctx.beginPath();ctx.arc(0,-23,3.5,0,6.283);ctx.fill();
+            ctx.beginPath();ctx.arc(0,-20,3,0,6.283);ctx.fill();
+            // inner petals — darker
+            ctx.fillStyle="#c01840";
+            ctx.beginPath();ctx.arc(0,-21,2.5,0,6.283);ctx.fill();
+            // highlight
+            ctx.fillStyle="rgba(255,255,255,0.3)";
+            ctx.beginPath();ctx.arc(-1,-22.5,1.5,0,6.283);ctx.fill();
+            // leaf on stem
+            ctx.fillStyle="#30b040";
+            ctx.beginPath();ctx.moveTo(-1,-12);ctx.quadraticCurveTo(-6,-15,-5,-11);ctx.quadraticCurveTo(-3,-10,-1,-12);ctx.fill();
+            ctx.restore();
+          }
         }else if(biome===1){
           // DESERT — sandy yellow
           pill(0,3,p.w,p.h,"#c0a040");pill(0,0,p.w,p.h,"#e8c860");pill(0,-2,p.w-6,p.h-5,"#f0e090");
