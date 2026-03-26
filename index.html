@@ -172,9 +172,9 @@ function playHat(gn,time,open){
 // SPACE: F# pentatonic + whole tone. Cosmic, vast. Echo repeats. 120bpm
 
 var melPats=[
-  // GRASS — happy pentatonic bounce (C E G A C6 only — all happy intervals)
-  ["E5",0,"G5",0,"A5",0,"G5","E5", "G5",0,"A5",0,"C6",0,"A5",0,
-   "G5",0,"E5",0,"G5","A5","C6",0, "A5",0,"G5",0,"E5",0,"C5",0],
+  // GRASS — dead simple catchy hook. Only C E G. Less is more.
+  ["C5","E5","G5","E5",0,0,"G5","E5", "C5",0,0,0,"G5","E5","C5",0,
+   "C5","E5","G5","E5","G5","C6",0,0, "G5","E5","C5",0,0,0,0,0],
   // DESERT — exotic Phrygian dominant, shimmering arps, augmented 2nds (E phryg dom)
   ["E5","F5","G#5","E5","F5","G#5","A5","B5", "A5","G#5","F5","E5","D5","E5","F5","G#5",
    "B5","A5","G#5","F5","E5","F5","G#5","B5", "A5","G#5","F5","E5","B4","C5","E5","F5"],
@@ -189,9 +189,9 @@ var melPats=[
    "A5","C#6","E6","A5","F#5","C#5","A4","E4",   "B5","D#6","F#6","B5","A5","F#5","D#5","B4"],
 ];
 var bassPats=[
-  // GRASS — thick pumping bass, always moving
-  ["C2","C2","C3","C2","C2","G2","C3","C2", "C2","C2","C3","C2","G2","C2","G2","C3",
-   "C2","C2","C3","C2","C2","G2","C3","C2", "G2","C2","G2","C3","C2","G2","C2","C3"],
+  // GRASS — simple deep pulse, C and G only
+  ["C2",0,0,"C3",0,0,"C2",0, "C2",0,"G2",0,0,0,"C2",0,
+   "C2",0,0,"C3",0,0,"G2",0, "C2",0,"G2","C3",0,0,0,0],
   // DESERT — E phrygian, heavy pulse root movement
   ["E2","E3","E2","E3", "F2","F3","F2","F3", "G#2","E2","G#2","E2","A2","B2","A2","E2"],
   // FOREST — Am-F-C-G walking, earthy
@@ -202,8 +202,8 @@ var bassPats=[
   ["F#1","C#2","F#2","C#2","D2","A2","D3","A2","E2","B2","E3","B2","F#1","C#2","A2","F#2"],
 ];
 var arpPats=[
-  // GRASS — simple arp on C and G only
-  ["C4","E4","G4","E4","C4","G4","E4","G4","C4","E4","G4","C5","G4","E4","C4","G3"],
+  // GRASS — soft sparkle, C E G only
+  ["C4","G4","E4","G4","C5","G4","E4","C4","G4","C5","E4","G4","C4","E4","G4","C5"],
   // DESERT — exotic shimmering E phrygian
   ["E5","G#5","B5","E6","B5","G#5","F5","A5","C6","A5","F5","E5","G#5","B5","G#5","E5"],
   // FOREST — mysterious Am arps with quick trills
@@ -215,8 +215,8 @@ var arpPats=[
 ];
 var drumPats=[
   // GRASS — upbeat steady groove, lively
-  // GRASS — alternating kicks, bouncy happy groove
-  ["k",0,"h","h","s",0,"h",0,"k","h",0,"h","s","h","k",0],
+  // GRASS — minimal bounce
+  ["k",0,"h",0,"s",0,0,0,"k",0,"h",0,"s",0,"h",0],
   // DESERT — heavy rhythmic pulse, exotic
   ["k","h","k","h","s",0,"k","k","h","k","h","h","s","h","k",0],
   // FOREST — light, organic, alternating
@@ -254,7 +254,7 @@ function updateMusic(sc,bossProximity){
   var phase=ms<1500?0:ms<3000?1:ms<4500?2:ms<6000?3:4;
 
   // BPM per biome spec
-  var biomeBPM=[142,130,125,115,120];
+  var biomeBPM=[130,130,125,115,120];
   var targetBPM=biomeBPM[phase]+Math.floor(sc/2000)*2;
   targetBPM=Math.min(targetBPM,155);
   mus.bpm+=(targetBPM-mus.bpm)*0.005;
