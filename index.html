@@ -172,9 +172,9 @@ function playHat(gn,time,open){
 // SPACE: F# pentatonic + whole tone. Cosmic, vast. Echo repeats. 120bpm
 
 var melPats=[
-  // GRASS — haunting forest, A minor pentatonic (A C D E G), mysterious and catchy
-  ["E4","A4",0,"C5",0,"D5","C5","A4", 0,"E4","A4",0,"C5","D5","E5",0,
-   "E5","D5","C5",0,"A4",0,"E4",0,    "A4","C5","D5","E5","D5","C5","A4",0],
+  // GRASS — magical forest, G major. Whimsical Zelda/Kirby feel. (G A B D E only)
+  ["G4","B4","D5","B4","G4","A4","B4","D5", "E5","D5","B4","G4","A4","B4","D5",0,
+   "B4","D5","E5","D5","B4","G4","A4","B4", "D5","E5","D5","B4","G4","A4","B4",0],
   // DESERT — exotic Phrygian dominant, shimmering arps, augmented 2nds (E phryg dom)
   ["E5","F5","G#5","E5","F5","G#5","A5","B5", "A5","G#5","F5","E5","D5","E5","F5","G#5",
    "B5","A5","G#5","F5","E5","F5","G#5","B5", "A5","G#5","F5","E5","B4","C5","E5","F5"],
@@ -189,9 +189,9 @@ var melPats=[
    "A5","C#6","E6","A5","F#5","C#5","A4","E4",   "B5","D#6","F#6","B5","A5","F#5","D#5","B4"],
 ];
 var bassPats=[
-  // GRASS — deep ominous heartbeat bass, Am
-  ["A1",0,"A2",0,"A1","E2",0,0, "A1",0,"A2","E2","A1",0,0,0,
-   "A1",0,"A2",0,"E2",0,"A2",0, "A1","E2","A2","E2","A1",0,"A2",0],
+  // GRASS — warm bouncy bass, G major (G-C-D-Em)
+  ["G2","G3","G2","D3","G2","G3","D3","G2", "C2","C3","C2","G2","C2","C3","G2","C2",
+   "D2","D3","D2","A2","D2","D3","A2","D2", "E2","E3","E2","B2","E2","E3","B2","E2"],
   // DESERT — E phrygian, heavy pulse root movement
   ["E2","E3","E2","E3", "F2","F3","F2","F3", "G#2","E2","G#2","E2","A2","B2","A2","E2"],
   // FOREST — Am-F-C-G walking, earthy
@@ -202,8 +202,8 @@ var bassPats=[
   ["F#1","C#2","F#2","C#2","D2","A2","D3","A2","E2","B2","E3","B2","F#1","C#2","A2","F#2"],
 ];
 var arpPats=[
-  // GRASS — eerie trickling arp, Am
-  ["A3","C4","E4","A4","E4","C4","A3","E4","C4","A4","E4","C4","A3","C4","E4","C4"],
+  // GRASS — sparkly twinkle arp, G major
+  ["G4","B4","D5","G5","D5","B4","C4","E4","G4","C5","G4","E4","D4","A4","D5","A4"],
   // DESERT — exotic shimmering E phrygian
   ["E5","G#5","B5","E6","B5","G#5","F5","A5","C6","A5","F5","E5","G#5","B5","G#5","E5"],
   // FOREST — mysterious Am arps with quick trills
@@ -215,8 +215,8 @@ var arpPats=[
 ];
 var drumPats=[
   // GRASS — upbeat steady groove, lively
-  // GRASS — sparse footsteps in a dark forest
-  ["k",0,0,"h",0,"s",0,0,"k",0,"h",0,0,"s",0,"h"],
+  // GRASS — light bouncy shuffle, magical feel
+  ["k",0,"h","h","s",0,"h","k",0,"h","k","h","s",0,"h","h"],
   // DESERT — heavy rhythmic pulse, exotic
   ["k","h","k","h","s",0,"k","k","h","k","h","h","s","h","k",0],
   // FOREST — light, organic, alternating
@@ -238,7 +238,7 @@ var bossMelPat=[
 var bossStabPat=[
   "Ab5",0,0,"Eb5",0,0,"Ab5","Gb5", 0,0,"Fb5",0,0,"Eb5",0,0];
 var padChordSets=[
-  [["A2","C3","E3"],["D3","F3","A3"],["E3","G3","B3"],["A2","C3","E3"]],
+  [["G2","B2","D3"],["C3","E3","G3"],["D3","F#3","A3"],["E3","G3","B3"]],
   [["E3","G#3","B3"],["F3","A3","C4"],["A3","C4","E4"],["E3","G#3","B3"]],
   [["A2","C3","E3"],["F2","A2","C3"],["C3","E3","G3"],["G2","B2","D3"]],
   [["C3","Eb3","Gb3"],["Ab2","C3","Eb3"],["Bb2","F3","Ab3"],["G2","Bb2","Db3"]],
@@ -254,7 +254,7 @@ function updateMusic(sc,bossProximity){
   var phase=ms<1500?0:ms<3000?1:ms<4500?2:ms<6000?3:4;
 
   // BPM per biome spec
-  var biomeBPM=[118,130,125,115,120];
+  var biomeBPM=[126,130,125,115,120];
   var targetBPM=biomeBPM[phase]+Math.floor(sc/2000)*2;
   targetBPM=Math.min(targetBPM,155);
   mus.bpm+=(targetBPM-mus.bpm)*0.005;
